@@ -7,11 +7,25 @@
 //
 
 import UIKit
+import Foundation
 
-class GlobalTimeTableViewController: UITableViewController {
+class GlobalTimeTableViewController: UITableViewController
+{
+    
+   // var clockView: ClockView!
+    let timeZoneArray = NSTimeZone.knownTimeZoneNames
+    
+    
 
-    override func viewDidLoad() {
+
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+    /*
+        clockView = ClockView(frame: CGRect(x: view.center.x - 100, y: view.center.y - 100, width: 200, height: 200))
+        clockView.timezone = NSTimeZone(name: "America/New York")
+        view.addSubview(clockView)
+    */
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,23 +43,30 @@ class GlobalTimeTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return timeZoneArray.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SmallClockCell", for: indexPath) as! SmallClockCell
 
+                
         // Configure the cell...
-
+        let aClockView = ClockView(frame: cell.smallClockView.frame)
+        aClockView.timezone = NSTimeZone(name: timeZoneArray[indexPath.row])
+        
+        cell.timeZoneAreaLabel.text = timeZoneArray[indexPath.row]
+        cell.smallClockView = aClockView
+     // tableView.reloadData()
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.
