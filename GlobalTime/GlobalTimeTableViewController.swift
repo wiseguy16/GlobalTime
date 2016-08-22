@@ -14,7 +14,7 @@ protocol PickZoneViewControllerDelegate
     func zoneWasChosen(_ zonePicked: String, theIndex: Int)
 }
 
-class GlobalTimeTableViewController: UITableViewController, PickZoneViewControllerDelegate
+class GlobalTimeTableViewController: UITableViewController, PickZoneViewControllerDelegate, UIPopoverPresentationControllerDelegate
 {
     
    // var clockView: ClockView!
@@ -74,7 +74,6 @@ class GlobalTimeTableViewController: UITableViewController, PickZoneViewControll
         
         cell.timeZoneAreaLabel.text = visibleTimeZones[indexPath.row]
         cell.smallClockView = aClockView
-     // tableView.reloadData()
         return cell
     }
  
@@ -129,13 +128,19 @@ class GlobalTimeTableViewController: UITableViewController, PickZoneViewControll
             let allZonesVC = segue.destination as! AllZonesTableViewController
             allZonesVC.delegate = self
             allZonesVC.zones = remainingTimeZones
-           // allZonesVC.popoverPresentationController?.delegate = self
+            allZonesVC.popoverPresentationController!.delegate = self
+//          allZonesVC.modalPresentationStyle =
+            //popoverPresentationController
             let contentHeigt = (44.0 * Double(remainingTimeZones.count))
-            allZonesVC.preferredContentSize = CGSize(width: 200.0, height: contentHeigt)
+            allZonesVC.preferredContentSize = CGSize(width: 100.0, height: contentHeigt)
             
         }
     }
- 
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController)
+    {
+        //do som stuff from the popover
+    }
     
     func zoneWasChosen(_ zonePicked: String, theIndex: Int)
     {

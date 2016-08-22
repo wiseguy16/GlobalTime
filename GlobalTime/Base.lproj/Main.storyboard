@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Global Time Table View Controller-->
+        <!--Global Time-->
         <scene sceneID="E0w-je-jae">
             <objects>
                 <tableViewController id="HjY-x9-Ccq" customClass="GlobalTimeTableViewController" customModule="GlobalTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,11 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SmallClockCell" rowHeight="100" id="Zex-vv-6sr" customClass="SmallClockCell" customModule="GlobalTime" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SmallClockCell" rowHeight="100" id="Zex-vv-6sr" customClass="SmallClockCell" customModule="GlobalTime" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zex-vv-6sr" id="0Rp-VM-xtn">
-                                    <frame key="frameInset" width="342" height="99"/>
+                                    <frame key="frameInset" width="375" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timezoneArea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iso-xQ-aij">
@@ -58,7 +58,7 @@
                             <outlet property="delegate" destination="HjY-x9-Ccq" id="n5c-YO-LYM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="3YL-C9-3aC">
+                    <navigationItem key="navigationItem" title="Global Time" id="3YL-C9-3aC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="KYp-S6-oYR">
                             <connections>
                                 <segue destination="w7u-bc-O7M" kind="popoverPresentation" identifier="AllZonesSegue" popoverAnchorBarButtonItem="KYp-S6-oYR" id="NPZ-7m-jSG">
