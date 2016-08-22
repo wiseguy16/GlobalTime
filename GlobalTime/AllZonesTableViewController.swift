@@ -1,5 +1,5 @@
 //
-//  GlobalTimeTableViewController.swift
+//  AllZonesTableViewController.swift
 //  GlobalTime
 //
 //  Created by Gregory Weiss on 8/22/16.
@@ -7,36 +7,15 @@
 //
 
 import UIKit
-import Foundation
 
-protocol PickZoneViewControllerDelegate
-{
-    func zoneWasChosen(_ zonePicked: String, theIndex: Int)
-}
+class AllZonesTableViewController: UITableViewController {
+    
+    var delegate: PickZoneViewControllerDelegate?
+    
+    var zones = [String]()
 
-class GlobalTimeTableViewController: UITableViewController, PickZoneViewControllerDelegate
-{
-    
-   // var clockView: ClockView!
-    let timeZoneArray = NSTimeZone.knownTimeZoneNames
-    var visibleTimeZones = [String]()
-    var remainingTimeZones = [String]()
-    
-    
-    
-
-
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
-        let allTimeZones = timeZoneArray
-        remainingTimeZones = allTimeZones
-        //var visibleTimeZones = [String]()
-    /*
-        clockView = ClockView(frame: CGRect(x: view.center.x - 100, y: view.center.y - 100, width: 200, height: 200))
-        clockView.timezone = NSTimeZone(name: "America/New York")
-        view.addSubview(clockView)
-    */
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -59,23 +38,27 @@ class GlobalTimeTableViewController: UITableViewController, PickZoneViewControll
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return visibleTimeZones.count
+        return zones.count
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SmallClockCell", for: indexPath) as! SmallClockCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AllZoneCell", for: indexPath)
 
-                
         // Configure the cell...
-        let aClockView = ClockView(frame: cell.smallClockView.frame)
-        aClockView.timezone = NSTimeZone(name: visibleTimeZones[indexPath.row])
-        
-        cell.timeZoneAreaLabel.text = visibleTimeZones[indexPath.row]
-        cell.smallClockView = aClockView
-     // tableView.reloadData()
+        let aZone = zones[indexPath.row]
+        cell.textLabel?.text = aZone
+
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let theIndex: Int = indexPath.row
+        let theZone = zones[indexPath.row]
+        delegate!.zoneWasChosen(theZone, theIndex: theIndex)
+        dismiss(animated: true, completion: nil)
     }
  
 
@@ -114,37 +97,14 @@ class GlobalTimeTableViewController: UITableViewController, PickZoneViewControll
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-        if segue.identifier == "AllZonesSegue"
-        {
-            let allZonesVC = segue.destination as! AllZonesTableViewController
-            allZonesVC.delegate = self
-            allZonesVC.zones = remainingTimeZones
-           // allZonesVC.popoverPresentationController?.delegate = self
-            let contentHeigt = (44.0 * Double(remainingTimeZones.count))
-            allZonesVC.preferredContentSize = CGSize(width: 200.0, height: contentHeigt)
-            
-        }
     }
- 
-    
-    func zoneWasChosen(_ zonePicked: String, theIndex: Int)
-    {
-       // let newZone = zonePicked
-        visibleTimeZones.append(zonePicked)
-        remainingTimeZones.remove(at: theIndex)
-        tableView.reloadData()
-        
-    }
-
+    */
 
 }

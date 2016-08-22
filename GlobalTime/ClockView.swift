@@ -47,7 +47,7 @@ class ClockView: UIView
         digitFont = UIFont()
         boundsCenter = CGPoint()
         super.init(frame: frame)
-        let fontSize = 8.0 + frame.size.width/50.0
+        let fontSize = 2.0 + frame.size.width/120.0
         digitFont = UIFont.systemFont(ofSize: fontSize)
         boundsCenter = CGPoint(x: bounds.width/2.0, y: bounds.height/2.0)
         self.backgroundColor = UIColor.clear
@@ -58,7 +58,7 @@ class ClockView: UIView
         digitFont = UIFont()
         boundsCenter = CGPoint()
         super.init(coder: aDecoder)
-        let fontSize = 8.0 + frame.size.width/50.0
+        let fontSize = 2.0 + frame.size.width/120.0
         digitFont = UIFont.systemFont(ofSize: fontSize)
         boundsCenter = CGPoint(x: bounds.width/2.0, y: bounds.height/2.0)
         self.backgroundColor = UIColor.clear

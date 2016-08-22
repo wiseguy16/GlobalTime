@@ -16,11 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SmallClockCell" rowHeight="100" id="Zex-vv-6sr" customClass="SmallClockCell" customModule="GlobalTime" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SmallClockCell" rowHeight="100" id="Zex-vv-6sr" customClass="SmallClockCell" customModule="GlobalTime" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zex-vv-6sr" id="0Rp-VM-xtn">
-                                    <frame key="frameInset" width="375" height="100"/>
+                                    <frame key="frameInset" width="342" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timezoneArea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iso-xQ-aij">
@@ -30,6 +30,9 @@
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ihj-cZ-GnB" customClass="ClockView" customModule="GlobalTime" customModuleProvider="target">
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" notEnabled="YES"/>
+                                            </accessibility>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="75" id="R7A-YW-Chc"/>
                                                 <constraint firstAttribute="width" secondItem="ihj-cZ-GnB" secondAttribute="height" multiplier="1:1" id="wcw-RA-R6H"/>
@@ -55,36 +58,56 @@
                             <outlet property="delegate" destination="HjY-x9-Ccq" id="n5c-YO-LYM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="3YL-C9-3aC"/>
+                    <navigationItem key="navigationItem" id="3YL-C9-3aC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="KYp-S6-oYR">
+                            <connections>
+                                <segue destination="w7u-bc-O7M" kind="popoverPresentation" identifier="AllZonesSegue" popoverAnchorBarButtonItem="KYp-S6-oYR" id="NPZ-7m-jSG">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w49-HA-Ond" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1040.8" y="108.39580209895054"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ifl-X9-GN3">
+        <!--All Zones Table View Controller-->
+        <scene sceneID="PCA-CD-IO5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LFD-7Z-pfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Ob8-2F-tmC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jfh-5J-pNS"/>
-                        <viewControllerLayoutGuide type="bottom" id="C1j-DR-lQY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uE7-Mg-0Sf">
+                <tableViewController id="w7u-bc-O7M" customClass="AllZonesTableViewController" customModule="GlobalTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cbq-EI-88M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yy9-By-Uv2" customClass="ClockView" customModule="GlobalTime" customModuleProvider="target">
-                                <frame key="frameInset" minX="67" minY="215" width="240" height="241"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllZoneCell" textLabel="J7r-Sf-cT3" style="IBUITableViewCellStyleDefault" id="qk6-Sp-d4B">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qk6-Sp-d4B" id="7Ed-9D-T5h">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="J7r-Sf-cT3">
+                                            <frame key="frameInset" minX="15" width="345" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="w7u-bc-O7M" id="pRk-6Z-djf"/>
+                            <outlet property="delegate" destination="w7u-bc-O7M" id="wU0-do-Ifj"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dks-ES-Z2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2321" y="233"/>
+            <point key="canvasLocation" x="2194" y="109"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PtD-MA-sM4">
