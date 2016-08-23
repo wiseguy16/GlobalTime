@@ -31,18 +31,6 @@ class GlobalTimeTableViewController: UITableViewController, PickZoneViewControll
         super.viewDidLoad()
         let allTimeZones = timeZoneArray
         remainingTimeZones = allTimeZones
-        //var visibleTimeZones = [String]()
-    /*
-        clockView = ClockView(frame: CGRect(x: view.center.x - 100, y: view.center.y - 100, width: 200, height: 200))
-        clockView.timezone = NSTimeZone(name: "America/New York")
-        view.addSubview(clockView)
-    */
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,42 +65,6 @@ class GlobalTimeTableViewController: UITableViewController, PickZoneViewControll
         return cell
     }
  
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
 
@@ -135,6 +87,15 @@ class GlobalTimeTableViewController: UITableViewController, PickZoneViewControll
             allZonesVC.preferredContentSize = CGSize(width: 100.0, height: contentHeigt)
             
         }
+        if segue.identifier == "BigClockSegue"
+        {
+            let bigVC = segue.destination as! BigClockViewController
+            let indexPath: NSIndexPath = tableView.indexPathForSelectedRow!
+            let selectedClock = visibleTimeZones[(indexPath.row)]
+            bigVC.aClockView =  selectedClock
+    
+        }
+        
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController)

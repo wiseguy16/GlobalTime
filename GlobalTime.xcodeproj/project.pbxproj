@@ -16,6 +16,8 @@
 		4AC4BC3B1D6B777E00961315 /* clckPic.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC4BC3A1D6B777E00961315 /* clckPic.png */; };
 		4AC4BC3D1D6B7C1400961315 /* SmallClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4BC3C1D6B7C1400961315 /* SmallClockCell.swift */; };
 		4AC4BC3F1D6B931300961315 /* AllZonesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4BC3E1D6B931300961315 /* AllZonesTableViewController.swift */; };
+		4AC4BC411D6BD0E100961315 /* BigClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4BC401D6BD0E100961315 /* BigClockViewController.swift */; };
+		4AC4BC431D6BD12500961315 /* BigClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4BC421D6BD12500961315 /* BigClock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		4AC4BC3A1D6B777E00961315 /* clckPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clckPic.png; sourceTree = "<group>"; };
 		4AC4BC3C1D6B7C1400961315 /* SmallClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallClockCell.swift; sourceTree = "<group>"; };
 		4AC4BC3E1D6B931300961315 /* AllZonesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllZonesTableViewController.swift; sourceTree = "<group>"; };
+		4AC4BC401D6BD0E100961315 /* BigClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigClockViewController.swift; sourceTree = "<group>"; };
+		4AC4BC421D6BD12500961315 /* BigClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigClock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				4AC4BC2A1D6B680300961315 /* Assets.xcassets */,
 				4AC4BC2C1D6B680300961315 /* LaunchScreen.storyboard */,
 				4AC4BC2F1D6B680300961315 /* Info.plist */,
+				4AC4BC401D6BD0E100961315 /* BigClockViewController.swift */,
+				4AC4BC421D6BD12500961315 /* BigClock.swift */,
 			);
 			path = GlobalTime;
 			sourceTree = "<group>";
@@ -150,8 +156,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AC4BC411D6BD0E100961315 /* BigClockViewController.swift in Sources */,
 				4AC4BC3D1D6B7C1400961315 /* SmallClockCell.swift in Sources */,
 				4AC4BC3F1D6B931300961315 /* AllZonesTableViewController.swift in Sources */,
+				4AC4BC431D6BD12500961315 /* BigClock.swift in Sources */,
 				4AC4BC241D6B680300961315 /* AppDelegate.swift in Sources */,
 				4AC4BC391D6B6BB000961315 /* ClockView.swift in Sources */,
 				4AC4BC361D6B684200961315 /* GlobalTimeTableViewController.swift in Sources */,

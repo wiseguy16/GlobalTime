@@ -29,10 +29,7 @@ class SmallClockCell: UITableViewCell
     {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
         
-       // clockView = ClockView(frame: CGRect(x: smallClockView.center.x, y: smallClockView.center.y, width: 20, height: 20))
-        //let clkView = clockView
 
     }
 

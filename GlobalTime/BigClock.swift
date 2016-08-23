@@ -1,24 +1,24 @@
 //
-//  ClockView.swift
+//  BigClock.swift
 //  GlobalTime
 //
 //  Created by Gregory Weiss on 8/22/16.
 //  Copyright © 2016 Gregory Weiss. All rights reserved.
 //
 
+
 import UIKit
 import Foundation
 
-
-let borderWidth: CGFloat = 2
-let borderAlpha: CGFloat = 1.0
-let graduationOffset: CGFloat = 10
-let graduationLength: CGFloat = 5.0
-let graduationWidth: CGFloat = 1.0
-let digitOffset: CGFloat = 10
+let borderWidth2: CGFloat = 2
+let borderAlpha2: CGFloat = 1.0
+let graduationOffset2: CGFloat = 10
+let graduationLength2: CGFloat = 5.0
+let graduationWidth2: CGFloat = 1.0
+let digitOffset2: CGFloat = 10
 
 @IBDesignable
-class ClockView: UIView
+class BigClock: UIView
 {
     
     var animationTimer: CADisplayLink?
@@ -47,7 +47,7 @@ class ClockView: UIView
         digitFont = UIFont()
         boundsCenter = CGPoint()
         super.init(frame: frame)
-        let fontSize = 2.0 + frame.size.width/120.0
+        let fontSize = 8.0 + frame.size.width/50.0
         digitFont = UIFont.systemFont(ofSize: fontSize)
         boundsCenter = CGPoint(x: bounds.width/2.0, y: bounds.height/2.0)
         self.backgroundColor = UIColor.clear
@@ -58,7 +58,7 @@ class ClockView: UIView
         digitFont = UIFont()
         boundsCenter = CGPoint()
         super.init(coder: aDecoder)
-        let fontSize = 2.0 + frame.size.width/120.0
+        let fontSize = 8.0 + frame.size.width/50.0
         digitFont = UIFont.systemFont(ofSize: fontSize)
         boundsCenter = CGPoint(x: bounds.width/2.0, y: bounds.height/2.0)
         self.backgroundColor = UIColor.clear
@@ -102,15 +102,15 @@ class ClockView: UIView
         cxt?.fillPath()
         
         // clock's border
-        cxt?.addEllipse(inRect: CGRect(x: rect.origin.x + borderWidth/2, y: rect.origin.y + borderWidth/2, width: rect.size.width - borderWidth, height: rect.size.height - borderWidth))
+        cxt?.addEllipse(inRect: CGRect(x: rect.origin.x + borderWidth2/2, y: rect.origin.y + borderWidth2/2, width: rect.size.width - borderWidth2, height: rect.size.height - borderWidth2))
         cxt?.setStrokeColor(borderColor.cgColor)
-        cxt?.setLineWidth(borderWidth)
+        cxt?.setLineWidth(borderWidth2)
         cxt?.strokePath()
         
         // numerals
         
         let center = CGPoint(x: rect.size.width / 2.0, y: rect.size.height / 2.0)
-        let markingDistanceFromCenter = rect.size.width / 2.0 - digitFont.lineHeight / 4.0 - 15 + digitOffset
+        let markingDistanceFromCenter = rect.size.width / 2.0 - digitFont.lineHeight / 4.0 - 15 + digitOffset2
         let offset = 4
         
         for i in 0..<12
@@ -187,6 +187,3 @@ class ClockView: UIView
         animationTimer?.remove(from: RunLoop.current, forMode: RunLoopMode.commonModes)
     }
 }
-
-
-

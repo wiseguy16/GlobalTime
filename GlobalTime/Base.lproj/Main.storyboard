@@ -50,6 +50,7 @@
                                 <connections>
                                     <outlet property="smallClockView" destination="ihj-cZ-GnB" id="6kh-Ln-Vdh"/>
                                     <outlet property="timeZoneAreaLabel" destination="Iso-xQ-aij" id="NUH-vp-iyG"/>
+                                    <segue destination="jha-LQ-coQ" kind="show" identifier="BigClockSegue" id="skB-po-5TC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -71,6 +72,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w49-HA-Ond" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1040.8" y="108.39580209895054"/>
+        </scene>
+        <!--Big Clock View Controller-->
+        <scene sceneID="gcM-C4-Xey">
+            <objects>
+                <viewController id="jha-LQ-coQ" customClass="BigClockViewController" customModule="GlobalTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k4M-1W-pcU"/>
+                        <viewControllerLayoutGuide type="bottom" id="NmP-sC-x2e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wci-8t-WrM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yF9-5m-ov9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2153" y="-133"/>
         </scene>
         <!--All Zones Table View Controller-->
         <scene sceneID="PCA-CD-IO5">
@@ -107,7 +126,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dks-ES-Z2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2194" y="109"/>
+            <point key="canvasLocation" x="2154" y="561"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PtD-MA-sM4">
