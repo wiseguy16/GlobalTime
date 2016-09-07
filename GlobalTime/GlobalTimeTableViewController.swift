@@ -18,7 +18,7 @@ class GlobalTimeTableViewController: UITableViewController, PickZoneViewControll
 {
     
    // var clockView: ClockView!
-    let timeZoneArray = NSTimeZone.knownTimeZoneNames
+   
     var visibleTimeZones = [String]()
     var remainingTimeZones = [String]()
     
@@ -29,6 +29,7 @@ class GlobalTimeTableViewController: UITableViewController, PickZoneViewControll
     override func viewDidLoad()
     {
         super.viewDidLoad()
+         let timeZoneArray = NSTimeZone.knownTimeZoneNames
         let allTimeZones = timeZoneArray
         remainingTimeZones = allTimeZones
     }
@@ -57,20 +58,33 @@ class GlobalTimeTableViewController: UITableViewController, PickZoneViewControll
 
                 
         // Configure the cell...
-        let aClockView = ClockView(frame: cell.smallClockView.frame)
-        aClockView.timezone = NSTimeZone(name: visibleTimeZones[indexPath.row])
+       // let aClockView = ClockView(frame: cell.smallClockView.frame)
         
-        cell.timeZoneAreaLabel.text = visibleTimeZones[indexPath.row]
-        cell.smallClockView = aClockView
+        let timeZoneName = visibleTimeZones[indexPath.row]
+        let possibleTimeZone = NSTimeZone(name: timeZoneName)
+        if let thisTimeZone = possibleTimeZone
+        {
+            cell.smallClockView.timezone = thisTimeZone
+        }
+        
+        let tempStringArray = timeZoneName.components(separatedBy: "/")
+        
+       // aClockView.timezone = NSTimeZone(name: visibleTimeZones[indexPath.row])
+       // let tempStringArray = visibleTimeZones[indexPath.row].components(separatedBy: "/")
+        
+        cell.timeZoneAreaLabel.text = tempStringArray[1]
+      //  cell.smallClockView = aClockView
         return cell
     }
  
+ 
+    
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?)
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -81,31 +95,48 @@ class GlobalTimeTableViewController: UITableViewController, PickZoneViewControll
             allZonesVC.delegate = self
             allZonesVC.zones = remainingTimeZones
             allZonesVC.popoverPresentationController!.delegate = self
-//          allZonesVC.modalPresentationStyle =
-            //popoverPresentationController
             let contentHeigt = (44.0 * Double(remainingTimeZones.count))
-            allZonesVC.preferredContentSize = CGSize(width: 100.0, height: contentHeigt)
+            allZonesVC.preferredContentSize = CGSize(width: 140.0, height: contentHeigt)
             
         }
         if segue.identifier == "BigClockSegue"
         {
             let bigVC = segue.destination as! BigClockViewController
-            let indexPath: NSIndexPath = tableView.indexPathForSelectedRow!
-            let selectedClock = visibleTimeZones[(indexPath.row)]
-            bigVC.aClockView =  selectedClock
+            let indexPath: IndexPath = tableView.indexPathForSelectedRow!
+            
+            let timeZoneName2 = visibleTimeZones[indexPath.row]
+            let possibleTimeZone2 = NSTimeZone(name: timeZoneName2)
+            if let thisTimeZone2 = possibleTimeZone2
+            {
+                bigVC.temptimeZone = thisTimeZone2
+                
+            }
+            
+            
+           // bigVC.theBigClock2.timezone = possibleTimeZone2
+
+            
+            
+            //let selectedClock = visibleTimeZones[(indexPath.row)]
+            //bigVC.theBigClock2.timezone =  selectedClock
     
         }
         
     }
     
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController)
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle
     {
-        //do som stuff from the popover
+        return .none
     }
+    
+ //   func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController)
+ //   {
+ //       //do som stuff from the popover
+ //   }
     
     func zoneWasChosen(_ zonePicked: String, theIndex: Int)
     {
-       // let newZone = zonePicked
+        dismiss(animated: true, completion: nil)
         visibleTimeZones.append(zonePicked)
         remainingTimeZones.remove(at: theIndex)
         tableView.reloadData()

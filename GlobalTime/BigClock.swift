@@ -90,19 +90,19 @@ class BigClock: UIView
     {
         // clock face
         let cxt = UIGraphicsGetCurrentContext()
-        cxt?.addEllipse(inRect: rect)
+        cxt?.addEllipse(in: rect)
         cxt?.setFillColor(clockBgColor.cgColor)
         cxt?.fillPath()
         
         // clock's center
         var radius: CGFloat = 6.0
         let center2 = CGRect(x: frame.size.width/2.0 - radius, y: frame.size.height/2.0 - radius, width: 2 * radius, height: 2 * radius)
-        cxt?.addEllipse(inRect: center2)
+        cxt?.addEllipse(in: center2)
         cxt?.setFillColor(digitColor.cgColor)
         cxt?.fillPath()
         
         // clock's border
-        cxt?.addEllipse(inRect: CGRect(x: rect.origin.x + borderWidth2/2, y: rect.origin.y + borderWidth2/2, width: rect.size.width - borderWidth2, height: rect.size.height - borderWidth2))
+        cxt?.addEllipse(in: CGRect(x: rect.origin.x + borderWidth2/2, y: rect.origin.y + borderWidth2/2, width: rect.size.width - borderWidth2, height: rect.size.height - borderWidth2))
         cxt?.setStrokeColor(borderColor.cgColor)
         cxt?.setLineWidth(borderWidth2)
         cxt?.strokePath()
@@ -115,7 +115,7 @@ class BigClock: UIView
         
         for i in 0..<12
         {
-            let hourString: NSString
+            let hourString: String
             if i + 1 < 10
             {
                 hourString = " \(i + 1)"
@@ -140,32 +140,34 @@ class BigClock: UIView
         let minHandPos = minutesHandPosition()
         cxt?.setStrokeColor(digitColor.cgColor)
         cxt?.beginPath()
-        cxt?.moveTo(x: frame.size.width/2.0, y: frame.size.height/2.0)
+        //cxt?.move(to: CGPoint(x: <#T##Double#>, y: <#T##Double#>)
+        cxt?.move(to: CGPoint(x: frame.size.width/2.0, y: frame.size.height/2.0))
         cxt?.setLineWidth(4.0)
-        cxt?.addLineTo(x: minHandPos.x, y: minHandPos.y)
+       // cxt?.addLine(to: <#T##CGPoint#>)
+        cxt?.addLine(to: CGPoint(x: minHandPos.x, y: minHandPos.y))
         cxt?.strokePath()
         
         let hourHandPos = hourHandPosition()
         cxt?.setStrokeColor(digitColor.cgColor)
         cxt?.beginPath()
-        cxt?.moveTo(x: frame.size.width/2.0, y: frame.size.height/2.0)
+        cxt?.move(to: CGPoint(x: frame.size.width/2.0, y: frame.size.height/2.0))
         cxt?.setLineWidth(4.0)
-        cxt?.addLineTo(x: hourHandPos.x, y: hourHandPos.y)
+        cxt?.addLine(to: CGPoint(x: hourHandPos.x, y: hourHandPos.y))
         cxt?.strokePath()
         
         let secHandPos = secondsHandPosition()
         cxt?.setStrokeColor(UIColor.red.cgColor)
         cxt?.beginPath()
-        cxt?.moveTo(x: frame.size.width/2.0, y: frame.size.height/2.0)
+        cxt?.move(to: CGPoint(x: frame.size.width/2.0, y: frame.size.height/2.0))
         cxt?.setLineWidth(1.0)
-        cxt?.addLineTo(x: secHandPos.x, y: secHandPos.y)
+        cxt?.addLine(to: CGPoint(x: secHandPos.x, y: secHandPos.y))
         cxt?.strokePath()
         
         // second hand's center
         
         radius = 3.0
         let center3 = CGRect(x: frame.size.width/2.0 - radius, y: frame.size.height/2.0 - radius, width: 2 * radius, height: 2 * radius)
-        cxt?.addEllipse(inRect: center3)
+        cxt?.addEllipse(in: center3)
         cxt?.setFillColor(UIColor.red.cgColor)
         cxt?.fillPath()
     }

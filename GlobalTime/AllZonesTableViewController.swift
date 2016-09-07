@@ -13,9 +13,11 @@ class AllZonesTableViewController: UITableViewController {
     var delegate: PickZoneViewControllerDelegate?
     
     var zones = [String]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       // zones = NSTimeZone.knownTimeZoneNames
 
        
     }
@@ -42,8 +44,9 @@ class AllZonesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllZoneCell", for: indexPath)
 
         // Configure the cell...
-        let aZone = zones[indexPath.row]
-        cell.textLabel?.text = aZone
+      //  let aZone = zones[indexPath.row]
+        let zoneStringTempArray = zones[indexPath.row].components(separatedBy: "/")
+        cell.textLabel?.text = zoneStringTempArray[1]
 
         return cell
     }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11191" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5eJ-jk-Ycs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5eJ-jk-Ycs">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -84,8 +84,24 @@
                     <view key="view" contentMode="scaleToFill" id="wci-8t-WrM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2mI-2Z-xXQ" customClass="ClockView" customModule="GlobalTime" customModuleProvider="target">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2mI-2Z-xXQ" secondAttribute="height" multiplier="1:1" id="B8c-3P-Zy9"/>
+                                    <constraint firstAttribute="width" constant="240" id="ohJ-1w-Uah"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2mI-2Z-xXQ" firstAttribute="centerY" secondItem="wci-8t-WrM" secondAttribute="centerY" id="9b2-H0-RRt"/>
+                            <constraint firstItem="2mI-2Z-xXQ" firstAttribute="centerX" secondItem="wci-8t-WrM" secondAttribute="centerX" id="j42-UA-8hk"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="theBigClock2" destination="2mI-2Z-xXQ" id="ZcO-zg-ur4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yF9-5m-ov9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

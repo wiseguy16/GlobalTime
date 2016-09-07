@@ -11,11 +11,9 @@ import Foundation
 
 class SmallClockCell: UITableViewCell
 {
-     var clockView: ClockView!
+    // var clockView: ClockView!
     
     @IBOutlet weak var timeZoneAreaLabel: UILabel!
-    
-    
     @IBOutlet weak var smallClockView: ClockView!
     
 

@@ -10,22 +10,32 @@ import UIKit
 
 class BigClockViewController: UIViewController
 {
-    var aClockView = String()
-    var theBigClock: BigClock!
+   // var aClockView = String()
+   // var theBigClock: BigClock!
     
+    @IBOutlet weak var theBigClock2: ClockView!
+    var temptimeZone: NSTimeZone!
 
-    @IBOutlet weak var bigClockView: BigClock!
+   // @IBOutlet weak var bigClockView: BigClock!
     
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        print(temptimeZone)
+       
+          theBigClock2.clockBgColor = UIColor.blue
         
-        theBigClock = BigClock(frame: CGRect(x: view.center.x - 100, y: view.center.y - 100, width: 200, height: 200))
-        theBigClock.timezone = NSTimeZone(name: aClockView)
-        view.addSubview(theBigClock)
+        theBigClock2.timezone = temptimeZone
+        
+        
+        
+        
+      //  theBigClock = BigClock(frame: CGRect(x: view.center.x - 100, y: view.center.y - 100, width: 200, height: 200))
+      //  theBigClock.timezone = NSTimeZone(name: aClockView)
+      //  view.addSubview(theBigClock)
       
-             print(aClockView)
+       //      print(aClockView)
     }
     
     override func viewWillAppear(_ animated: Bool)

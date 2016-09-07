@@ -36,31 +36,31 @@ class ClockView: UIView
     var minutes: Int = 0
     var hours: Int = 0
     
-    var boundsCenter: CGPoint
+  //  var boundsCenter: CGPoint
     var clockBgColor = UIColor.black
     var borderColor = UIColor.white
     var digitColor = UIColor.white
-    var digitFont: UIFont
+  //  var digitFont: UIFont
     
     override init(frame: CGRect)
     {
-        digitFont = UIFont()
-        boundsCenter = CGPoint()
+       // digitFont = UIFont()
+       // boundsCenter = CGPoint()
         super.init(frame: frame)
-        let fontSize = 2.0 + frame.size.width/120.0
-        digitFont = UIFont.systemFont(ofSize: fontSize)
-        boundsCenter = CGPoint(x: bounds.width/2.0, y: bounds.height/2.0)
+       // let fontSize = 2.0 + frame.size.width/120.0
+       // digitFont = UIFont.systemFont(ofSize: fontSize)
+       // boundsCenter = CGPoint(x: bounds.width/2.0, y: bounds.height/2.0)
         self.backgroundColor = UIColor.clear
     }
     
     required init?(coder aDecoder: NSCoder)
     {
-        digitFont = UIFont()
-        boundsCenter = CGPoint()
+       // digitFont = UIFont()
+       // boundsCenter = CGPoint()
         super.init(coder: aDecoder)
-        let fontSize = 2.0 + frame.size.width/120.0
-        digitFont = UIFont.systemFont(ofSize: fontSize)
-        boundsCenter = CGPoint(x: bounds.width/2.0, y: bounds.height/2.0)
+       // let fontSize = 2.0 + frame.size.width/120.0
+       // digitFont = UIFont.systemFont(ofSize: fontSize)
+       // boundsCenter = CGPoint(x: bounds.width/2.0, y: bounds.height/2.0)
         self.backgroundColor = UIColor.clear
     }
     
@@ -90,19 +90,19 @@ class ClockView: UIView
     {
         // clock face
         let cxt = UIGraphicsGetCurrentContext()
-        cxt?.addEllipse(inRect: rect)
+        cxt?.addEllipse(in: rect)
         cxt?.setFillColor(clockBgColor.cgColor)
         cxt?.fillPath()
         
         // clock's center
         var radius: CGFloat = 6.0
         let center2 = CGRect(x: frame.size.width/2.0 - radius, y: frame.size.height/2.0 - radius, width: 2 * radius, height: 2 * radius)
-        cxt?.addEllipse(inRect: center2)
+        cxt?.addEllipse(in: center2)
         cxt?.setFillColor(digitColor.cgColor)
         cxt?.fillPath()
         
         // clock's border
-        cxt?.addEllipse(inRect: CGRect(x: rect.origin.x + borderWidth/2, y: rect.origin.y + borderWidth/2, width: rect.size.width - borderWidth, height: rect.size.height - borderWidth))
+        cxt?.addEllipse(in: CGRect(x: rect.origin.x + borderWidth/2, y: rect.origin.y + borderWidth/2, width: rect.size.width - borderWidth, height: rect.size.height - borderWidth))
         cxt?.setStrokeColor(borderColor.cgColor)
         cxt?.setLineWidth(borderWidth)
         cxt?.strokePath()
@@ -110,12 +110,14 @@ class ClockView: UIView
         // numerals
         
         let center = CGPoint(x: rect.size.width / 2.0, y: rect.size.height / 2.0)
+        let fontSize = 8.0 + frame.size.width/50.0
+        let digitFont = UIFont.systemFont(ofSize: fontSize)
         let markingDistanceFromCenter = rect.size.width / 2.0 - digitFont.lineHeight / 4.0 - 15 + digitOffset
         let offset = 4
         
         for i in 0..<12
         {
-            let hourString: NSString
+            let hourString: String
             if i + 1 < 10
             {
                 hourString = " \(i + 1)"
@@ -140,32 +142,32 @@ class ClockView: UIView
         let minHandPos = minutesHandPosition()
         cxt?.setStrokeColor(digitColor.cgColor)
         cxt?.beginPath()
-        cxt?.moveTo(x: frame.size.width/2.0, y: frame.size.height/2.0)
+        cxt?.move(to: CGPoint(x: frame.size.width/2.0, y: frame.size.height/2.0))
         cxt?.setLineWidth(4.0)
-        cxt?.addLineTo(x: minHandPos.x, y: minHandPos.y)
+        cxt?.addLine(to: CGPoint(x: minHandPos.x, y: minHandPos.y))
         cxt?.strokePath()
         
         let hourHandPos = hourHandPosition()
         cxt?.setStrokeColor(digitColor.cgColor)
         cxt?.beginPath()
-        cxt?.moveTo(x: frame.size.width/2.0, y: frame.size.height/2.0)
+        cxt?.move(to: CGPoint(x: frame.size.width/2.0, y: frame.size.height/2.0))
         cxt?.setLineWidth(4.0)
-        cxt?.addLineTo(x: hourHandPos.x, y: hourHandPos.y)
+        cxt?.addLine(to: CGPoint(x: hourHandPos.x, y: hourHandPos.y))
         cxt?.strokePath()
         
         let secHandPos = secondsHandPosition()
         cxt?.setStrokeColor(UIColor.red.cgColor)
         cxt?.beginPath()
-        cxt?.moveTo(x: frame.size.width/2.0, y: frame.size.height/2.0)
+        cxt?.move(to: CGPoint(x: frame.size.width/2.0, y: frame.size.height/2.0))
         cxt?.setLineWidth(1.0)
-        cxt?.addLineTo(x: secHandPos.x, y: secHandPos.y)
+        cxt?.addLine(to: CGPoint(x: secHandPos.x, y: secHandPos.y))
         cxt?.strokePath()
         
         // second hand's center
         
         radius = 3.0
         let center3 = CGRect(x: frame.size.width/2.0 - radius, y: frame.size.height/2.0 - radius, width: 2 * radius, height: 2 * radius)
-        cxt?.addEllipse(inRect: center3)
+        cxt?.addEllipse(in: center3)
         cxt?.setFillColor(UIColor.red.cgColor)
         cxt?.fillPath()
     }
@@ -174,6 +176,7 @@ class ClockView: UIView
     {
         time = Date()
         let calendar = NSCalendar(identifier: .gregorian)
+        calendar?.timeZone = timezone! as TimeZone
         let components = calendar?.components([.hour, .minute, .second], from: time!)
         
         hours = (components?.hour)!
